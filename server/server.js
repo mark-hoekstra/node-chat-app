@@ -22,10 +22,10 @@ io.on('connection', (socket)=>{
         'A new user joined.'
     ));
 
-    socket.on('createMessage', (createMessage)=>{
+    socket.on('createMessage', (createMessage, callback)=>{
         console.log('A new message was created:', createMessage);
         io.emit('newMessage', generateMessage(createMessage.from, createMessage.text));
-
+        callback('This is from the server.');
         // socket.broadcast.emit('newMessage', {
         //         from: createMessage.from,
         //         text: createMessage.text,
